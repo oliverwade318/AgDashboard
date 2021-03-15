@@ -1,0 +1,18 @@
+.expansionPanel{
+  margin-bottom: 2px;
+  border-bottom: 1px solid #eeeeee !important;
+  border-radius: 0 !important;
+
+  :root mat-expansion-panel-body{
+    //padding: 0 !important;
+  }
+  mat-expansion-panel-header{
+    height: 40px;
+  }
+  mat-list-item{
+    border-top: 1px solid #f1f1f1 !important;
+    height: 40px;
+    width: 100%;
+  }
+}
+

@@ -1,0 +1,143 @@
+<div class="container">
+
+  <!-- CARDS CONTAINER-->
+  <div class="cardContainer" fxLayout="row wrap" fxLayout.lt-sm="column">
+
+    <!-- NEXT ORDERS CARD -->
+    <mat-card class="indexCard">
+
+      <mat-card-title-group>
+        <mat-card-title>
+          <mat-icon>event_note</mat-icon>Pedidos
+        </mat-card-title>
+        <mat-card-subtitle>Pedidos próximos</mat-card-subtitle>
+      </mat-card-title-group>
+
+      <mat-card-content>
+        <!-- LOADING -->
+        <div fxLayoutAlign="center center" *ngIf="$birthdayListLoading | async">
+          <mat-spinner></mat-spinner>
+        </div>
+        <!-- ERROR -->
+        <ng-container *ngIf="$birthdayListError | async">
+          <p>Houve um erro...</p>
+        </ng-container>
+        <!-- CONTENT -->
+        <ng-container
+          *ngIf="($upcomingOrderList | async) && !($upcomingOrderListLoading | async) && !($upcomingOrderListError | async)">
+          <mat-nav-list role="navigation">
+            <a mat-list-item *ngFor="let order of ($upcomingOrderList | async)"
+              [routerLink]="['pedidos/editar/', order.id]"
+              matTooltip="{{order.deliveryMode == 'delivery' ? 'Entregar em ' + order.address.city + '-' + order.address.state + ', bairro ' +  order.address.district : 'Retirada em mãos'}}"
+              matTooltipClass="cardTooltip">
+              <mat-icon>{{order.deliveryMode == 'delivery' ? 'local_shipping' : 'store_mall_directory'}}</mat-icon>
+              {{order.deliveryDate | date: 'dd/MM'}} - {{ order.client?.name }}
+            </a>
+          </mat-nav-list>
+        </ng-container>
+      </mat-card-content>
+
+    </mat-card>
+
+    <!-- NEXT BIRTHDAY CARD -->
+    <mat-card>
+      <mat-card-title>
+        <mat-icon>cake</mat-icon>Aniversários
+      </mat-card-title>
+      <mat-card-subtitle>Aniversários próximos</mat-card-subtitle>
+      <mat-card-content>
+        <!-- LOADING -->
+        <div fxLayoutAlign="center center" *ngIf="$birthdayListLoading | async">
+          <mat-spinner></mat-spinner>
+        </div>
+        <!-- ERROR -->
+        <ng-container *ngIf="$birthdayListError | async">
+          <p>Houve um erro...</p>
+        </ng-container>
+        <!-- CONTENT -->
+        <ng-container
+          *ngIf="($birthdayList | async) && !($birthdayListLoading | async) && !($birthdayListError | async)">
+          <mat-nav-list role="navigation">
+            <a mat-list-item [routerLink]="['clientes/editar/', client.clientId]"
+              *ngFor="let client of ($birthdayList | async)">
+              {{client.dday | number: '2.0'}}/{{client.dmonth | number: '2.0'}} - {{ client.name }}
+              <i>{{client.dependentId ? ' (dependente)' : ''}}</i>
+            </a>
+          </mat-nav-list>
+        </ng-container>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- MONTHLY INDICATORS -->
+    <mat-card>
+      <mat-card-title>
+        <mat-icon>insert_chart</mat-icon>Indicadores Mensais
+      </mat-card-title>
+      <mat-card-subtitle>Sobre o mês de {{($monthlyIndicators | async)?.currentMonth}}</mat-card-subtitle>
+
+      <mat-card-content>
+
+        <!-- LOADING -->
+        <div fxLayoutAlign="center center" *ngIf="$generalIndicatorsLoading | async">
+          <mat-spinner></mat-spinner>
+        </div>
+        <!-- ERROR -->
+        <ng-container *ngIf="$monthlyIndicatorsError | async">
+          <p>Houve um erro...</p>
+        </ng-container>
+        <!-- CONTENT -->
+        <ng-container
+          *ngIf="($monthlyIndicators | async) && !($monthlyIndicatorsLoading | async) && !($monthlyIndicatorsError | async)">
+          <mat-nav-list role="navigation">
+            <mat-list-item>
+              Faturamento: R$ {{ ($monthlyIndicators | async)?.revenue | number: '.2'}}
+            </mat-list-item>
+            <mat-list-item>
+              Ticket Médio: R$ {{ ($monthlyIndicators | async)?.averageTicket | number: '.2'}}
+            </mat-list-item>
+            <mat-list-item>Pedidos: {{ ($monthlyIndicators | async)?.orders}}</mat-list-item>
+            <mat-list-item>Novos Clientes: {{ ($monthlyIndicators | async)?.clients}}</mat-list-item>
+          </mat-nav-list>
+        </ng-container>
+
+      </mat-card-content>
+
+    </mat-card>
+
+    <!-- GENERAL INDICATORS -->
+    <mat-card>
+      <mat-card-title>
+        <mat-icon>insert_chart_outlined</mat-icon>Indicadores Gerais
+      </mat-card-title>
+      <mat-card-subtitle>Sobre histórico geral</mat-card-subtitle>
+      <mat-card-content>
+
+        <!-- LOADING -->
+        <div fxLayoutAlign="center center" *ngIf="$generalIndicatorsLoading | async">
+          <mat-spinner></mat-spinner>
+        </div>
+        <!-- ERROR -->
+        <ng-container *ngIf="$generalIndicatorsError | async">
+          <p>Houve um erro...</p>
+        </ng-container>
+        <!-- CONTENT -->
+        <ng-container
+          *ngIf="($generalIndicators | async) && !($generalIndicatorsLoading | async) && !($generalIndicatorsError | async)">
+          <mat-nav-list role="navigation">
+            <mat-list-item>
+              Faturamento: R$ {{($generalIndicators | async)?.revenue | number: '.2'}}
+            </mat-list-item>
+            <mat-list-item>
+              Ticket Médio: R$ {{($generalIndicators | async)?.averageTicket | number: '.2'}}
+            </mat-list-item>
+            <mat-list-item>Pedidos: {{($generalIndicators | async)?.orders}}</mat-list-item>
+            <mat-list-item>Clientes: {{($generalIndicators | async)?.clients}}</mat-list-item>
+          </mat-nav-list>
+        </ng-container>
+
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+
+</div>

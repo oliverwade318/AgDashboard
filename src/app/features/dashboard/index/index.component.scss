@@ -1,0 +1,23 @@
+.container {
+  margin: 0;
+
+  .cardContainer {
+    padding: 0;
+    mat-card {
+      margin: 5px;
+      mat-card-content {
+        text-align: left;
+      }
+    }
+  }
+
+  .mat-icon {
+    vertical-align: middle;
+    line-height: 18px;
+    padding-right: 8px;
+  }
+
+  .mat-card {
+    min-width: 300px;
+  }
+}

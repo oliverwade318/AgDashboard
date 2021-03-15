@@ -1,0 +1,18 @@
+<form [formGroup]="formLogin" fxLayout="column" fxLayoutGap="10px" (ngSubmit)="login()">
+  <mat-form-field>
+    <mat-label>Usuário</mat-label>
+    <input type="text" matInput formControlName="username" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Senha</mat-label>
+    <input type="password" matInput formControlName="password" />
+  </mat-form-field>
+
+  <button matButton mat-flat-button color="primary" type="button" (click)="login()">Entrar</button>
+
+  <div [class.hidden]="!(loading$ | async)" class="spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+
+</form>

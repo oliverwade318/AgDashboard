@@ -1,0 +1,17 @@
+<div class="container" fxLayout="column" fxLayoutAlign="top start">
+
+  <div class="header">
+    <app-header></app-header>
+  </div>
+
+  <div class="content" fxLayout="row" fxFlex="grow" fxLayoutGap="4px">
+    <div class="sideBar">
+      <app-sidebar></app-sidebar>
+    </div>
+
+    <div class="page" fxFlex fxLayout="row">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,91 @@
+<div class="container">
+
+  <!-- PAGE HEADER-->
+  <div class="header">
+    <h2>Cadastro de <span class="title">clientes</span></h2>
+  </div>
+
+  <!-- FORM -->
+  <form #myForm [formGroup]="form" (ngSubmit)="save()" fxLayout="column">
+
+    <!-- FIELDS -->
+    <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px">
+
+      <mat-form-field appearance="outline" fxFlex>
+        <mat-label>Nome</mat-label>
+        <input formControlName="name" matInput>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" fxFlex>
+        <mat-label>E-mail</mat-label>
+        <input formControlName="email" matInput>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" fxFlex>
+        <mat-label>Telefone</mat-label>
+        <input formControlName="phone" matInput mask="(00) 00000-0000">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" fxFlex>
+        <mat-label>Data de Nascimento</mat-label>
+        <input formControlName="birthday" matInput >
+      </mat-form-field>
+
+    </div>
+
+    <!-- ADDRESS GROUP -->
+    <mat-card>
+      <div class="formTitle">Endereço</div>
+      <mat-card-content>
+        <div formGroupName="address" fxLayout="row wrap" class="addressForm" fxLayoutGap="10px">
+
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>CEP</mat-label>
+            <input formControlName="cep" matInput #cep
+              mask="00000-000">
+          </mat-form-field>
+
+          <!--
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Estado</mat-label>
+            <mat-select formControlName="state" matInput (selectionChange)="getCities(state.value)" #state>
+              <mat-option *ngFor="let state of states" [value]="state.sigla">{{state.sigla}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Cidade</mat-label>
+            <mat-select formControlName="city" matInput #city>
+              <mat-option *ngFor="let city of cities" [value]="city.nome">{{city.nome}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          -->
+
+
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Bairro</mat-label>
+            <input formControlName="district" matInput>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Logradouro</mat-label>
+            <input formControlName="street" matInput>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Número</mat-label>
+            <input formControlName="number" matInput mask="099999">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Complemento</mat-label>
+            <input formControlName="complement" matInput>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+
+  </form>
+
+</div>
