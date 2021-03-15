@@ -13,7 +13,6 @@ import { ClientsModule } from './clients/clients.module';
 import { OrdersModule } from './orders/orders.module';
 import { ReportsModule } from './reports/reports.module';
 
-
 @NgModule({
   declarations: [LayoutComponent, IndexComponent, SidebarComponent, HeaderComponent],
   imports: [
@@ -25,7 +24,7 @@ import { ReportsModule } from './reports/reports.module';
     ReactiveFormsModule,
     ClientsModule,
     OrdersModule,
-    ReportsModule
+    ReportsModule,
   ]
 })
 export class DashboardModule { }

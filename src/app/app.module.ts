@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,7 +16,10 @@ import { CoreModule } from './core/core.module';
 
 import { reducers } from './store/reducers/index.reducer';
 import { effects } from './store/effects/index.effects';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
+import { MAT_DATE_FORMATS } from '@angular/material/core';
+import { CUSTOM_MOMENT_ADAPTER } from './core/utils/moment-adapter-config';
 
 @NgModule({
   declarations: [
@@ -29,12 +32,17 @@ import { effects } from './store/effects/index.effects';
     FlexLayoutModule,
     HttpClientModule,
     CoreModule,
+    MatMomentDateModule ,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot(effects),
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
-  providers: [LoginService],
+  providers: [
+    LoginService,
+    { provide: LOCALE_ID, useValue: 'pt-BR'},
+    {provide: MAT_DATE_FORMATS, useValue: CUSTOM_MOMENT_ADAPTER},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -28,7 +28,9 @@
 
       <mat-form-field appearance="outline" fxFlex>
         <mat-label>Data de Nascimento</mat-label>
-        <input formControlName="birthday" matInput >
+        <input formControlName="birthday" matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
     </div>
@@ -41,8 +43,7 @@
 
           <mat-form-field appearance="outline" fxFlex>
             <mat-label>CEP</mat-label>
-            <input formControlName="cep" matInput #cep
-              mask="00000-000">
+            <input formControlName="cep" matInput #cep mask="00000-000">
           </mat-form-field>
 
           <!--
