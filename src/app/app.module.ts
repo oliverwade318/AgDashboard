@@ -21,6 +21,12 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { CUSTOM_MOMENT_ADAPTER } from './core/utils/moment-adapter-config';
 
+//locale
+import { registerLocaleData } from '@angular/common';
+import ptBr from '@angular/common/locales/pt';
+
+registerLocaleData(ptBr);
+
 @NgModule({
   declarations: [
     AppComponent
