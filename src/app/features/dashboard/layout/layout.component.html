@@ -5,7 +5,7 @@
   </div>
 
   <div class="content" fxLayout="row" fxFlex="grow" fxLayoutGap="4px">
-    <div class="sideBar">
+    <div class="sideBar" [class.hidden]="!(showMenu$ | async)">
       <app-sidebar></app-sidebar>
     </div>
 

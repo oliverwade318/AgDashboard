@@ -3,18 +3,21 @@
   width: 100wh;
   background-color: #f1f1f1;
   position: relative;
+
   .header {
     width: 100%;
   }
-  .content{
+
+  .content {
     width: 100%;
     background-color: #ffffff;
     padding: 6px 3px;
 
-    .sideBar{
+    .sideBar {
       width: 200px;
     }
-    .page{
+
+    .page {
       padding: 10px 20px;
     }
   }
